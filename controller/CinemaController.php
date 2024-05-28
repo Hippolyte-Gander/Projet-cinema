@@ -13,6 +13,19 @@ class CinemaController {
             FROM film
         ");
 
-        require "./view/listFilms.php";
+        require "view/film/listFilms.php";
+    }
+
+    //fonction infos acteur
+    public function detActeur($id) {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("
+            SELECT *
+            FROM acteur
+            WHERE id_acteur = :id
+        ");
+        $requete->execute(["id" => $id]);
+
+        require "view/acteur/detailActeur.php";
     }
 }
