@@ -11,6 +11,8 @@ public function listFilms() {
     SELECT titre, annee_sortie
     FROM film
     ");
+
+    require "./view/listFilms.php";
 }
 
 
