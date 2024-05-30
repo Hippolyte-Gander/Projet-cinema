@@ -16,7 +16,7 @@ class CinemaController {
         require "view/film/listFilms.php";
     }
 
-    public function detFilm($id) {
+    public function detailFilm($id) {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
             SELECT *
@@ -40,8 +40,8 @@ class CinemaController {
 
         require "view/acteur/listActeur.php";
     }
-    
-    public function detActeur($id) {
+
+    public function detailActeur($id) {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
         SELECT *
