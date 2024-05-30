@@ -5,7 +5,7 @@ use Model\Connect;
 
 class CinemaController {
     
-    // fonction chercher tous les films
+    // fonctions films
     public function listFilms() {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
@@ -16,16 +16,40 @@ class CinemaController {
         require "view/film/listFilms.php";
     }
 
-    //fonction infos acteur
-    public function detActeur($id) {
+    public function detFilm($id) {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
             SELECT *
-            FROM acteur
-            WHERE id_acteur = :id
+            FROM film
+            WHERE id_film = :id
         ");
         $requete->execute(["id" => $id]);
 
+        require "view/film/detailFilm.php";
+    }
+    
+    
+    
+    //fonction acteurs
+    public function listActeurs() {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("
+            SELECT prenom, nom
+            FROM acteur
+        ");
+
+        require "view/acteur/listActeur.php";
+    }
+    
+    public function detActeur($id) {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("
+        SELECT *
+        FROM acteur
+        WHERE id_acteur = :id
+        ");
+        $requete->execute(["id" => $id]);
+        
         require "view/acteur/detailActeur.php";
     }
 }
