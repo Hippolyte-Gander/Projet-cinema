@@ -18,12 +18,20 @@ class CinemaController {
 
     public function detailFilm($id) {
         $pdo = Connect::seConnecter();
-        $requete = $pdo->prepare("
+        $requeteFilm = $pdo->prepare("
             SELECT *
             FROM film
             WHERE id_film = :id
         ");
-        $requete->execute(["id" => $id]);
+        $requeteFilm->execute(["id" => $id]);
+
+        $requeteCasting = $pdo->prepare("
+            SELECT acteur, role
+            FROM casting c
+            INNER JOIN film f ON f.id_film = c.id_film
+            WHERE f.id_film = :id
+        ");
+        $requeteCasting->execute(["id" => $id]);
 
         require "view/film/detailFilm.php";
     }
