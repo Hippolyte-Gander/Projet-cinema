@@ -35,9 +35,7 @@ class CinemaController {
 
         require "view/film/detailFilm.php";
     }
-    
-    
-    
+
     //fonction acteurs
     public function listActeurs() {
         $pdo = Connect::seConnecter();
@@ -60,4 +58,55 @@ class CinemaController {
         
         require "view/acteur/detailActeur.php";
     }
+
+    //fonction realisateurs
+    public function listRealisateurs() {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("
+            SELECT prenom, nom
+            FROM realisateur
+        ");
+
+        require "view/realisateur/listRealisateur.php";
+    }
+    
+    public function detailRealisateur($id) {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("
+        SELECT *
+        FROM realisateur
+        WHERE id_realisateur = :id
+        ");
+        $requete->execute(["id" => $id]);
+        
+        require "view/realisateur/detailRealisateur.php";
+    }
+
+    //fonction genres
+    //tous les genres
+    public function listGenres() {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("
+            SELECT nom_genre
+            FROM genre
+        ");
+
+        require "view/genre/listGenres.php";
+    }
+    // tous les films d'un genre
+    public function listDuGenre($idFilm, $idGenre) {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("
+            SELECT titre, annee_sortie
+            FROM film f
+            INNER JOIN associer_genre ag ON ag.id_film = f.id_film
+            WHERE f.id_film = :idFilm
+            AND ag.id_genre = :idGenre
+        ");
+        $requete->execute(["idFilm" => $idFilm, "idGenre" => $idGenre]);
+
+        require "view/genre/pageGenre.php";
+    }
+
+
 }
