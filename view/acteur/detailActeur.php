@@ -1,24 +1,26 @@
 <?php ob_start();?>
 
 <?php
-    foreach($requeteRealisateur->fetchAll() as $info){ ?>
+    foreach($requeteDetailActeur->fetchAll() as $info){ ?>
         <p> Date de Naissance: <?=$info["date_naissance"]?>
         <p> Sexe: <?=$info["sexe"]?>
     <?php } ?>
 
 <table class="uk-table uk-table-striped">
-    <thead>
+<thead>
         <tr>
             <th>Film</th>
             <th>Année de sortie en France</th>
+            <th>Rôle</th>
         </tr>
     </thead>
     <tbody>
         <?php
-            foreach($requeteFilms->fetchAll() as $film){ ?>
+            foreach($requeteListFilmsActeur->fetchAll() as $film){ ?>
                 <tr>
-                <td><a href="index.php?action=detailFilm&id=<?=$film["id_film"]?>"><?= $film["titre"]?></a></td>
+                    <td><a href="index.php?action=detailFilm&id=<?=$film["id_film"]?>"><?= $film["titre"]?></a></td>
                     <td><?= $film["annee_sortie_france"]?></td>
+                    <td><a href="index.php?action=detailRole&id=<?=$film["id_role"]?>"><?= $film["nom_role"] ?></a></td>
                 </tr>
             <?php } ?>
     </tbody>

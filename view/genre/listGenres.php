@@ -12,7 +12,9 @@
         <?php
             foreach($requete->fetchAll() as $genre){ ?>
                 <tr>
-                    <td><?= $genre["nom_genre"] ?> </td>
+                    <td>
+                        <a href="index.php?action=pageGenre&id=<?=$genre["id_genre"]?>"><?= $genre["nom_genre"] ?></a>
+                    </td>
                 </tr>
             <?php } ?>
     </tbody>

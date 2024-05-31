@@ -1,5 +1,4 @@
-<?php ob_start();
-?>
+<?php ob_start();?>
 
 
 <?php
@@ -8,7 +7,7 @@
         <p> Durée: <?=$info["duree_minutes"]?> minutes
         <p> Synopsis: <?=$info["synopsis"]?>
         <p> Note globale: <?=$info["note"]?>
-        <p> Réalisateur: <?=$info["annee_sortie_france"]?>
+        <p> Réalisateur: <a href="index.php?action=detailRealisateur&id=<?=$info["id_realisateur"]?>"><?=$info["prenom"] ." ".$info["nom"]?></a>
     <?php } ?>
 
 <table class="uk-table uk-table-striped">
@@ -16,7 +15,9 @@
         <?php
             foreach($requeteCasting->fetchAll() as $cast){ ?>
                 <tr>
-                    <td><?= $cast["prenom"]." ".$cast["nom"]." dans le rôle de ".$cast["nom_role"] ?> </td>
+                    <td>
+                        <a href="index.php?action=detailActeur&id=<?=$cast["id_acteur"]?>"><?= $cast["prenom"]." ".$cast["nom"]?></a> dans le rôle de <a href="index.php?action=detailRole&id=<?=$cast["id_role"]?>"><?= $cast["nom_role"] ?></a>
+                    </td>
                 </tr>
             <?php } ?>
     </tbody>
