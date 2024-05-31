@@ -1,18 +1,18 @@
 <?php ob_start(); ?>
 
-<p class="uk-label uk-label-warning">Il y a <?= $requete->rowCount() ?> genres</p>
+<p class="uk-label uk-label-warning">Il y a <?= $requete->rowCount() ?> rôles</p>
 
 <table class="uk-table uk-table-striped">
     <thead>
         <tr>
-            <th>Genre</th>
+            <th>Rôle</th>
         </tr>
     </thead>
     <tbody>
         <?php
-            foreach($requete->fetchAll() as $genre){ ?>
+            foreach($requete->fetchAll() as $role){ ?>
                 <tr>
-                    <td><?= $genre["nom_genre"] ?> </td>
+                    <td><?= $role["nom_role"] ?> </td>
                 </tr>
             <?php } ?>
     </tbody>
@@ -20,7 +20,7 @@
 
 <?php
 
-$titre = "Liste des genres";
-$titre_secondaire = "Liste des genres";
+$titre = "Liste des rôles";
+$titre_secondaire = "Liste des rôles";
 $contenu = ob_get_clean();
 require "view/template.php";

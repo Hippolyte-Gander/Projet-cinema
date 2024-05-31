@@ -27,6 +27,12 @@ class CinemaController {
             WHERE id_film = :id
         ");
         $requeteDetailFilm->execute(["id" => $id]);
+        // $requeteDetailFilm = $pdo->prepare("
+        //     SELECT titre
+        //     FROM film
+        //     WHERE id_film = :id
+        // ");
+        // $requeteDetailFilm->execute(["id" => $id]);
 
         $requeteCasting = $pdo->prepare("
             SELECT p.prenom, p.nom, r.nom_role
@@ -160,6 +166,19 @@ class CinemaController {
 
         require "view/role/detailRole.php";
     }
+    // tous les roles
+    public function listRoles() {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("
+            SELECT nom_role
+            FROM role
+            ORDER BY nom_role ASC
+        ");
+        $requete->execute();
+
+        require "view/role/listRoles.php";
+    }
+
 
 
 }
