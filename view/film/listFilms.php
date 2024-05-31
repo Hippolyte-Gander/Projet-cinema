@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<p class="uk-label uk-label-warning">Il y a <? $requete->rowCount() ?> films</p>
+<p class="uk-label uk-label-warning">Il y a <?= $requete->rowCount() ?> films</p>
 
 <table class="uk-table uk-table-striped">
     <thead>
@@ -13,8 +13,8 @@
         <?php
             foreach($requete->fetchAll() as $film){ ?>
                 <tr>
-                    <td><?$film["titre"] ?> </td>
-                    <td><?$film["anne_sortie"] ?> </td>
+                    <td><?= $film["titre"] ?> </td>
+                    <td><?= $film["annee_sortie_france"] ?> </td>
                 </tr>
             <?php } ?>
     </tbody>

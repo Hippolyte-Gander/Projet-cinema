@@ -3,7 +3,7 @@
 use Controller\CinemaController;
 
 spl_autoload_register(function($class_name){
-    include $class_name . 'php';
+    include $class_name . '.php';
 });
 
 $ctrlCinema = new CinemaController();
@@ -22,6 +22,10 @@ if(isset($_GET["action"])){
         
         //Réalisateur
         case "listRealisateurs" : $ctrlCinema->listRealisateurs(); break;
+        case "detailRealisateur" : $ctrlCinema->detailRealisateur($id); break;
+        
+        //Genres
+        case "listGenres" : $ctrlCinema->listGenres(); break;
         case "detailRealisateur" : $ctrlCinema->detailRealisateur($id); break;
     }
 }

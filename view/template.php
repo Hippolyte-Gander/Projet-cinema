@@ -8,7 +8,12 @@
 </head>
 <body>
     <nav class="uk-navbar-container">
-
+        <ul>
+            <li><a href="index.php?action=listFilms">Films</a></li>
+            <li><a href="index.php?action=listActeurs">Acteurs</a></li>
+            <li><a href="index.php?action=listRealisateurs">Réalisateurs</a></li>
+            <li><a href="index.php?action=listGenres">Genres</a></li>
+        </ul>
     </nav>
 
     <div id="wrapper" class="uk-container uk-container-expand">
