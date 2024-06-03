@@ -2,7 +2,7 @@
 
 <?php
     foreach($requeteDetailActeur->fetchAll() as $info){ ?>
-        <p> Date de Naissance: <?=$info["date_naissance"]?>
+        <p> Date de Naissance: <?=$info["date_naissance_formatee"]?>
         <p> Sexe: <?=$info["sexe"]?>
     <?php } ?>
 

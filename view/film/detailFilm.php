@@ -8,6 +8,7 @@
         <p> Synopsis: <?=$info["synopsis"]?>
         <p> Note globale: <?=$info["note"]?>
         <p> Réalisateur: <a href="index.php?action=detailRealisateur&id=<?=$info["id_realisateur"]?>"><?=$info["prenom"] ." ".$info["nom"]?></a>
+        <p> Genre: <a href="index.php?action=pageGenre&id=<?=$info["id_genre"]?>"><?=$info["nom_genre"]?></a>
     <?php } ?>
 
 <table class="uk-table uk-table-striped">

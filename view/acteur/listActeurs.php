@@ -16,7 +16,7 @@
                 <tr>
                     <td><a href="index.php?action=detailActeur&id=<?=$acteur["id_acteur"]?>"><?= $acteur["prenom"] ?></a></td>
                     <td><a href="index.php?action=detailActeur&id=<?=$acteur["id_acteur"]?>"><?= $acteur["nom"] ?></a></td>
-                    <td><?= $acteur["date_naissance"] ?></td>
+                    <td><?= $acteur["date_naissance_formatee"] ?></td>
                 </tr>
             <?php } ?>
     </tbody>

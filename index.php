@@ -1,12 +1,14 @@
 <?php
 
 use Controller\CinemaController;
+use Controller\HomeController;
 
 spl_autoload_register(function($class_name){
     include $class_name . '.php';
 });
 
 $ctrlCinema = new CinemaController();
+$ctrlHome = new HomeController();
 
 $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 
@@ -32,4 +34,6 @@ if(isset($_GET["action"])){
         case "listRoles" : $ctrlCinema->listRoles(); break;
         case "detailRole" : $ctrlCinema->detailRole($id); break;
     }
+} else {
+    $ctrlHome->index(); 
 }
